@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- automatically import output chunks from a jupyter notebook
 -- tries to find a kernel that matches the kernel in the jupyter notebook
 -- falls back to a kernel that matches the name of the active venv (if any)
-local imb = function(e) -- init molten buffer
+--[[ local imb = function(e) -- init molten buffer
   vim.schedule(function()
     local kernels = vim.fn.MoltenAvailableKernels()
     local try_kernel_name = function()
@@ -89,4 +89,4 @@ vim.api.nvim_create_autocmd('BufEnter', {
       vim.g.molten_virt_text_output = true
     end
   end,
-})
+}) ]]

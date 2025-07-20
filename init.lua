@@ -25,7 +25,7 @@ rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
-require("lazy").setup("custom.plugins", {
+require('lazy').setup('custom.plugins', {
   ui = {
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
@@ -45,19 +45,13 @@ require("lazy").setup("custom.plugins", {
   },
 })
 
+vim.o.completeopt = 'menu,menuone,noinsert,noselect,popup'
 
-  
+-- NOTE: Plugins can specify dependencies.
+--
+-- The dependencies are proper plugin specifications as well - anything
+-- you do for a plugin at the top level, you can do for a dependency.
+--
+-- Use the `dependencies` key to specify the dependencies of a particular plugin
 
-  -- NOTE: Plugins can specify dependencies.
-  --
-  -- The dependencies are proper plugin specifications as well - anything
-  -- you do for a plugin at the top level, you can do for a dependency.
-  --
-  -- Use the `dependencies` key to specify the dependencies of a particular plugin
-
-
-  -- LSP Plugins
-
-
-  
-
+-- LSP Plugins
