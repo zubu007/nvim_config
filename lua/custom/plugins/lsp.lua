@@ -209,8 +209,21 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
+        clangd = {
+          settings = {
+            clangd = {
+              fallbackFlags = { '-std=c++20' },
+              completion = {
+                enableSnippets = true,
+                detailedLabel = true,
+              },
+              diagnostics = {
+                enable = true,
+                suppress = { 'unused-parameter' },
+              },
+            },
+          },
+        },
         pyright = {
           settings = {
             pyright = { autoImportCompletion = true },
@@ -265,8 +278,9 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-        'pyright',
+        'stylua', -- for Lua
+        'pyright', -- for Python
+        'clang-format', -- for C++
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -284,6 +298,15 @@ return {
           end,
         },
       }
+      -- Format on save for C++ using clangd/clang-format
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = { '*.cxx', '*.cpp', '*.h', '*.hpp' },
+        callback = function()
+          vim.lsp.buf.format {
+            async = false,
+          }
+        end,
+      })
     end,
   },
 }
