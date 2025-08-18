@@ -29,7 +29,7 @@ return {
       { '<leader>zr', ':CopilotChatReview<CR>', mode = 'v', desc = 'Review Code' },
       { '<leader>zf', ':CopilotChatFix<CR>', mode = 'v', desc = 'Fix code issue' },
       { '<leader>zo', ':CopilotChatOptimize<CR>', mode = 'v', desc = 'Optimize Code' },
-      { '<C-r>', ':CopilotChatReset<CR>', mode = 'n', desc = 'Reset Chat window' },
+      -- { '<C-r>', ':CopilotChatReset<CR>', mode = 'n', desc = 'Reset Chat window' },
       -- See Commands section for default commands if you want to lazy load on them
     },
   },

@@ -212,6 +212,13 @@ vim.keymap.set('n', '<localleader>RA', function()
   runner.run_all(true)
 end, { desc = 'run all cells of all languages', silent = true })
 
+-- gcc compile and run keymaps for C/C++
+-- Compile & Run in command-line (non-interactive)
+vim.keymap.set('n', '<leader>r', ':!g++ % -o %< && ./%< <CR>', { desc = 'Run C++ file' })
+
+-- Compile & Run in terminal (interactive)
+vim.keymap.set('n', '<leader>R', ':!g++ % -o %< && :terminal ./%< <CR>', { desc = 'Run C++ in terminal' })
+
 local M = {}
 
 M.copilot = {
