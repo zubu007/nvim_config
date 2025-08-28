@@ -6,6 +6,12 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.api.nvim_set_keymap('n', '<Home>', '^', { noremap = true, silent = true })
 
+-- gcc compile and run keymaps for C/C++
+vim.keymap.set('n', '<leader>cg', '<cmd>CMakeGenerate<cr>', { desc = 'CMake Generate' })
+vim.keymap.set('n', '<leader>cb', '<cmd>CMakeBuild<cr>', { desc = 'CMake Build' })
+vim.keymap.set('n', '<leader>cr', '<cmd>CMakeRun<cr>', { desc = 'CMake Run' })
+vim.keymap.set('n', '<leader>cC', '<cmd>CMakeClean<cr>', { desc = 'CMake Clean' })
+
 -- Keymap to select and evaluate the Python code block above the cursor
 vim.keymap.set('n', '<localleader>rr', function()
   -- Find start of the Python block above cursor
@@ -211,13 +217,6 @@ vim.keymap.set('v', '<localleader>r', runner.run_range, { desc = 'run visual ran
 vim.keymap.set('n', '<localleader>RA', function()
   runner.run_all(true)
 end, { desc = 'run all cells of all languages', silent = true })
-
--- gcc compile and run keymaps for C/C++
--- Compile & Run in command-line (non-interactive)
-vim.keymap.set('n', '<leader>r', ':!g++ % -o %< && ./%< <CR>', { desc = 'Run C++ file' })
-
--- Compile & Run in terminal (interactive)
-vim.keymap.set('n', '<leader>R', ':!g++ % -o %< && :terminal ./%< <CR>', { desc = 'Run C++ in terminal' })
 
 local M = {}
 
